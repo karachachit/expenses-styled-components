@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import ExpenseItem from "../expense-item/ExpenseItem";
-import "./Expenses.css";
 import ExpensesFilter from "../expenses-filter/ExpensesFilter";
 import Chart from "../Chart/Chart";
+import { styled } from "styled-components";
 
 const Expenses = ({ expenses }) => {
   const [selectedYear, setSelectedYear] = useState("2023");
@@ -15,8 +15,8 @@ const Expenses = ({ expenses }) => {
     return yearString === selectedYear;
   });
   return (
-    <ul className="expenses-list">
-      <div className="expenses" />
+    <ExpensesList>
+      <div />
 
       <ExpensesFilter value={selectedYear} onChange={yearChangeHandler} />
       <Chart items={filteredItems} />
@@ -32,8 +32,17 @@ const Expenses = ({ expenses }) => {
           />
         );
       })}
-    </ul>
+    </ExpensesList>
   );
 };
 
 export default Expenses;
+
+
+const ExpensesList=styled.ul`
+background: #1f1f1f;
+margin: 2rem auto;
+width: 48rem;
+padding: 1rem;
+border-radius: 10px;
+`

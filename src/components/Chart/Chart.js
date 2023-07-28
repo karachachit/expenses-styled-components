@@ -1,6 +1,6 @@
 import React from "react";
-import "./Chart.css";
 import ChartBar from "./ChartBar";
+import { styled } from "styled-components";
 
 const Chart = ({ items }) => {
   console.log(items, "iii");
@@ -58,11 +58,8 @@ const Chart = ({ items }) => {
     months[monthNumber].currentPrice += item.price;
   });
   return (
-    <div className="chart">
+    <ChartStyle>
       {months.map((item) => {
-        {
-          console.log(item, "lll");
-        }
         return (
           <ChartBar
             key={item.label}
@@ -72,8 +69,21 @@ const Chart = ({ items }) => {
           />
         );
       })}
-    </div>
+    </ChartStyle>
   );
 };
 
 export default Chart;
+  
+
+
+const ChartStyle=styled.div`
+padding: 1rem;
+margin-top: 90px;
+border-radius: 12px;
+background-color: #f8dfff;
+text-align: center;
+display: flex;
+justify-content: space-around;
+height: 10rem;
+`

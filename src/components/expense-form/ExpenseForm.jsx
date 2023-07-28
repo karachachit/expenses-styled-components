@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "../UI/button/Button";
 import FormInput from "../UI/form-input/FormInput";
-import "./ExpenseForm.css";
+import { styled } from "styled-components";
 
 const ExpenseForm = (props) => {
   const [title, setTitle] = useState("");
@@ -42,8 +42,8 @@ const ExpenseForm = (props) => {
   };
 
   return (
-    <form className="expense-form">
-      <div className="expense-form_input">
+    <form>
+      <ExpenseFormContainer>
         <FormInput
           id="text"
           labelName="Название"
@@ -71,14 +71,28 @@ const ExpenseForm = (props) => {
           value={date}
           onChange={dateChangeHandler}
         />
-      </div>
+      </ExpenseFormContainer>
 
-      <div className="buttons">
+      <BtnContainer>
         <Button title="Отмена" onClick={cancelHandler} />
         <Button title="Добавить расходы" onClick={saveExpense} />
-      </div>
+      </BtnContainer>
     </form>
   );
 };
 
 export default ExpenseForm;
+
+const  ExpenseFormContainer=styled.div`
+display: flex;
+flex-wrap: wrap;
+gap: 1rem;
+margin-bottom: 1rem;
+text-align: left;
+`
+
+const BtnContainer=styled.div`
+display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+`
